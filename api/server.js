@@ -61,7 +61,7 @@ module.exports = server;
 
 
 
-// // ===== Table1 ===== User
+// // ===== Table1 ===== User gives us
 // users_login/registration = {
 //     "id": "",        
 //     "username": "",
@@ -69,37 +69,36 @@ module.exports = server;
 //     "email": "",
 // }
 
-// // ===== Table2 ===== Us
+// // ===== Table2 ===== User gives us
 // user_input = {
 //     "id": "",
+//     "user": "",             // ===== user_id
 //     "ailment" : "",         //<-- Pain, Anxiety
 //     "desired_effects" : "", //<-- Sleepy, Hungry
-//     "breed/type" : "",      //<-- Sativa, Indica, Hybrid
+//     "breed" : "",      //<-- Sativa, Indica, Hybrid
 //     "intake" : "",          //<-- Edible, Flower, Drink ***STRETCH
 // }
 
 
-// // ===== Table3 ===== Us
+// // ===== Table3 ===== We give to user
 // strains = {
 //     "id": "",         
 //     "name": "",
 //     "flavor": "",
-//     "decription": "",
+//     "description": "",
 //     "ailment" : "",         //<-- Pain, Anxiety
 //     "effect" : "",          //<-- Dizzy, Hungry
 //     "breed" : "",           //<-- Sativa, Indica, Hybrid
 // }
 
 
-// // ===== Table4 ===== Us
+// // ===== Table4 ===== We give to user
 // user_rec = {
 //     "id": "",
 //     "user": "",             // ===== user_id
 //     "recommendation" : "",  // ===== strain_id
 //     "intake" : "",          //<-- Edible, Flower, Drink ***STRETCH
 // }
-
-
 
 
 
