@@ -1,11 +1,11 @@
-const router = require("express").Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-const Users = require("../users/users-model.js");
-const secrets = require("../api/secrets.js");
+const Users = require('../users/usersModel.js');
+const secrets = require('../api/secrets.js');
 
-router.post("/register", (req, res) => {
+router.post('/register', (req, res) => {
     let user = req.body;
 
     const rounds = process.env.HASH_ROUNDS || 10;
@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
         });
 });
 
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
     let { username, password } = req.body;
 
     Users.findBy({ username })
@@ -34,9 +34,9 @@ router.post("/login", (req, res) => {
 
                 const token = generateToken(user);
 
-                res.status(200).json({ message: "Welcome!", token });
+                res.status(200).json({ message: 'Welcome!', token });
             } else {
-                res.status(401).json({ message: "You shall not pass!" });
+                res.status(401).json({ message: 'You shall not pass!' });
             }
         })
         .catch(error => {
@@ -53,7 +53,7 @@ function generateToken(user) {
     };
     const secret = secrets.jwtSecret;
     const options = {
-        expiresIn: "4d",
+        expiresIn: '4d',
     };
 
     return jwt.sign(payload, secret, options);
