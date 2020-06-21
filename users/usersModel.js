@@ -17,23 +17,24 @@ function findBy(filter) {
     return db('users').where(filter)
 };
 
-async function add(user) {
-    const [id] = await db('users').insert(user, 'id');
-    return findById(id)
-};
+function add(user) {
+    return db('users').insert(user, "id").then(([id]) => {
+        return findById(id);
+    });
+}
 
 function findById(id) {
-    return db("users").where({ id }).first();
+    return db("users").where({ id }).select('id', 'username', 'email').first();
 };
 
-function update(id, user) {
-    return db('users')
-            .where('id', Number(id))
-            .update(user)
-};
+function update(changes, id) {
+    return db('scheusersmes').where({ id }).update(changes).then(() => {
+        return findById(id);
+    });
+}
 
 function remove(id) {
     return db('users')
-            .where('id', Number(id))
+            .where({ id })
             .del()
 };
