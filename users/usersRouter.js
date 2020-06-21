@@ -4,7 +4,7 @@ const Users = require('./usersModel.js');
 
 // =========== GET Users ===========
 router.get('/', (req, res) => {
-  // console.log("token", req.decodedToken);
+  console.log("token", req.decodedToken);
   Users.find()
     .then(users => {
       res.json(users);
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     }
   })
   .catch((err) => {
-    res.status(500).json({ message: "ERROR unable to find user", err });
+    res.status(500).json({ message: "ERROR unable to find user", errorMessage: error.detail });
   });
 })
 
