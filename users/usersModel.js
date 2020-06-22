@@ -9,31 +9,38 @@ module.exports = {
     remove
 };
 
+// =========== GET Users ===========
 function find() {
-    return db('users').select('id', 'username', 'email')
+    return db('users').select('id', 'username', 'email').orderBy('id', 'asc')
 };
 
+// =========== GET User by id ===========
+function findById(id) {
+    return db("users").where({ id }).select('id', 'username', 'email').first();
+};
+
+// =========== GET User by username ===========
 function findBy(filter) {
     return db('users').where(filter)
 };
 
-async function add(user) {
-    const [id] = await db('users').insert(user, 'id');
-    return findById(id)
-};
+// =========== POST User ===========
+function add(user) {
+    return db('users').insert(user, "id").then(([id]) => {
+        return findById(id);
+    });
+}
 
-function findById(id) {
-    return db("users").where({ id }).first();
-};
+// =========== PUT User =========== why not
+function update(changes, id) {
+    return db('users').where({ id }).update(changes).then(() => {
+        return findById(id);
+    });
+}
 
-function update(id, user) {
-    return db('users')
-            .where('id', Number(id))
-            .update(user)
-};
-
+// =========== DELETE User ===========
 function remove(id) {
     return db('users')
-            .where('id', Number(id))
+            .where({ id })
             .del()
 };

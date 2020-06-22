@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const Users = require('../users/usersModel.js');
 const secrets = require('../api/secrets.js');
 
+// =========== POST User ===========
 router.post('/register', (req, res) => {
     let user = req.body;
 
@@ -20,10 +21,11 @@ router.post('/register', (req, res) => {
         })
         .catch(error => {
             console.log(error);
-            res.status(500).json({ errorMessage: error.message });
+            res.status(500).json({ errorMessage: error.detail });
         });
 });
 
+// =========== GET User by username ===========
 router.post('/login', (req, res) => {
     let { username, password } = req.body;
 
@@ -45,6 +47,7 @@ router.post('/login', (req, res) => {
         });
 });
 
+// =========== Generate JSON Web Token ===========
 function generateToken(user) {
 
     const payload = {
@@ -58,5 +61,6 @@ function generateToken(user) {
 
     return jwt.sign(payload, secret, options);
 }
+
 
 module.exports = router;
