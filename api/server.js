@@ -7,6 +7,7 @@ const path = require('path');
 const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const usersRouter = require('../users/usersRouter');
+const strainsRouter = require('../strains/strainsRouter');
 
 // ======== Server  ========
 
@@ -19,7 +20,7 @@ server.use(express.json());
 server.use('/users', authenticate, usersRouter)
 
 server.use('/auth', authRouter);
-// server.use('/strains', authenticate, strainsRouter);
+server.use('/strains', strainsRouter);
 
 // ======== 404 Page ========
 server.use('/', (req, res, next) => {
