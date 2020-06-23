@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 // const Strains = require('./strainsModel.js');
 
-const strains = [
+let strains = [
     {
         name: "Girl Scout Cookies",
         flavor: "Sweet",
@@ -102,9 +102,9 @@ const strains = [
 ];
 
 // =========== GET Strains ===========
-router.get('/strains', (req, res) => {
+router.get('/', (req, res) => {
     console.log(strains[0]);
-        res.status(200).json(strains);
+    res.status(200).json(strains);
   });
 
 // // =========== GET Strains ===========
