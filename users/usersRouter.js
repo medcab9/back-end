@@ -4,7 +4,7 @@ const Users = require('./usersModel.js');
 
 // =========== GET Users ===========
 router.get('/', (req, res) => {
-  console.log("token", req.decodedToken);
+  console.log("token for USERS", req.decodedToken);
   Users.find()
     .then(users => {
       res.json(users);
