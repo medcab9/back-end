@@ -18,11 +18,11 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/users', authenticate, usersRouter)
+server.use('/users', usersRouter)
 
 server.use('/auth', authRouter);
-server.use('/strains', authenticate, strainsRouter);
-server.use('/response', authenticate, userResponseRouter);
+server.use('/strains', strainsRouter);
+server.use('/response', userResponseRouter);
 
 // ======== 404 Page ========
 server.use('/', (req, res, next) => {
