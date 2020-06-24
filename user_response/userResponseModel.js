@@ -4,6 +4,7 @@ module.exports = {
     add,
     find,
     findById,
+    remove
 };
 
 // =========== GET User_ Response's ===========
@@ -22,3 +23,10 @@ function add(user_response) {
         return findById(id);
     });
 }
+
+// =========== DELETE Response ===========
+function remove(id) {
+    return db('user_response')
+            .where({ id })
+            .del()
+};
