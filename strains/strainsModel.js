@@ -1,16 +1,16 @@
 const db = require('../database/dbConfig.js');
 
 module.exports = {
-    // add,
     find,
-    // findBy,
-    // findById,
-    // update,
-    // remove
+    findById,
 };
 
-// =========== GET Users ===========
+// =========== GET Strains ===========
 function find() {
     return db('strains')
-    // .select('id', 'username', 'email').orderBy('id', 'asc')
+};
+
+// =========== GET Strain by id ===========
+function findById(id) {
+    return db('strains').where({ id }).first();
 };
