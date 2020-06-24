@@ -20,7 +20,7 @@ server.use(express.json());
 server.use('/users', authenticate, usersRouter)
 
 server.use('/auth', authRouter);
-server.use('/strains', strainsRouter);
+server.use('/strains', authenticate, strainsRouter);
 
 // ======== 404 Page ========
 server.use('/', (req, res, next) => {
