@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
 })
 
 // =========== POST User_Response ===========
-router.post('/:id', (req, res) => {
+router.post('/', (req, res) => {
     let desiredEffect = req.body;;
 
     Responses.add(desiredEffect)
