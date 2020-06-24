@@ -15,16 +15,16 @@ router.get('/', (req, res) => {
 // =========== GET User by id ===========
 router.get('/:id', (req, res) => {
   Users.findById(req.params.id)
-  .then(resource => {
-    if(resource) {
-      res.status(200).json(resource)
-    } else {
-      res.status(404).json({message: "user not found"})
-    }
-  })
-  .catch((err) => {
-    res.status(500).json({ message: "ERROR unable to find user", errorMessage: error.detail });
-  });
+    .then(resource => {
+      if (resource) {
+        res.status(200).json(resource)
+      } else {
+        res.status(404).json({ message: "user not found" })
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "ERROR unable to find user", errorMessage: error.detail });
+    });
 })
 
 // =========== DELETE User ===========
@@ -32,16 +32,16 @@ router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
   Users.remove(id)
-  .then(deleted => {
-    if(deleted){
-      res.status(200).json({removed: `user ${id} 😥`})
-    } else {
-      res.status(404).json({message: "user not found"})
-    }
-  })
-  .catch((err) => {
-    res.status(500).json({ message: "ERROR unable to find user", err });
-  });
+    .then(deleted => {
+      if (deleted) {
+        res.status(200).json({ removed: `user ${id} 😥` })
+      } else {
+        res.status(404).json({ message: "user not found" })
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "ERROR unable to find user", err });
+    });
 })
 
 module.exports = router;
