@@ -28,31 +28,18 @@ router.get('/', (req, res) => {
     });
   })
 
-  // =========== POST Recommendation ===========
-  router.post("/", (req, res) => {
-    Recommendations.add(req.body)
-        .then((newUserStrain) => {
-            response.status(200).json({ ...newUserStrain })
-        })
-        .catch((error) => {
-            response.status(500).json({ message: error })
-        })
-})
 
 // =========== POST Recommendation ===========
-router.post('/search', (req, res) => {
-    axios.post("https://medcab-td.herokuapp.com/predictions",
-        {
-            ...req.body
-        }
-    )
-        .then((dataResponse) => {
-            console.log(dataResponse.data);
-            res.status(200).json({ ...dataResponse.data });
-        })
-        .catch((error) => {
-            response.status(500).json({ message: error })
-        })
+router.post('/', (req, res) => {
+  let rec = req.body;
+
+  Recommendations.add(rec)
+    .then(response => {
+      res.status(201).json({ message: `new responses added, thank you`, rec });
+    })
+    .catch(err => {
+      res.status(500).json({ message: "ERROR unable to add response", err });
+    })
 });
 
   
