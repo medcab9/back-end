@@ -8,7 +8,8 @@ const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const usersRouter = require('../users/usersRouter');
 const strainsRouter = require('../strains/strainsRouter');
-const userResponseRouter = require('../user_response/userResponseRouter')
+const userResponseRouter = require('../user_response/userResponseRouter');
+const recommendationRouter = require('../recommendation/recommendationRouter');
 
 // ======== Server  ========
 
@@ -18,11 +19,12 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/users', usersRouter)
+server.use('/users', usersRouter);
 
 server.use('/auth', authRouter);
 server.use('/strains', strainsRouter);
 server.use('/response', userResponseRouter);
+server.use('/recommendation', recommendationRouter);
 
 // ======== 404 Page ========
 server.use('/', (req, res, next) => {
@@ -46,86 +48,3 @@ server.use((err, req, res, next) => {
 })
 
 module.exports = server;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // ===== Table1 ===== User gives us
-// users_login/registration = {
-//     "id": "",        
-//     "username": "",
-//     "password": "",
-//     "email": "",
-// }
-
-// // ===== Table2 ===== User gives us
-// user_input = {
-//     "id": "",
-//     "user": "",             // ===== user_id
-//     "ailment" : "",         //<-- Pain, Anxiety
-//     "desired_effects" : "", //<-- Sleepy, Hungry
-//     "breed" : "",      //<-- Sativa, Indica, Hybrid
-//     "intake" : "",          //<-- Edible, Flower, Drink ***STRETCH
-// }
-
-
-// // ===== Table3 ===== We give to user
-// strains = {
-//     "id": "",         
-//     "name": "",
-//     "flavor": "",
-//     "description": "",
-//     "ailment" : "",         //<-- Pain, Anxiety
-//     "effect" : "",          //<-- Dizzy, Hungry
-//     "breed" : "",           //<-- Sativa, Indica, Hybrid
-// }
-
-
-// // ===== Table4 ===== We give to user
-// user_rec = {
-//     "id": "",
-//     "user": "",             // ===== user_id
-//     "recommendation" : "",  // ===== strain_id
-//     "intake" : "",          //<-- Edible, Flower, Drink ***STRETCH
-// }
-
-
-
-
