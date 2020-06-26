@@ -20,10 +20,10 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/auth', authRouter);
-server.use('/users',  usersRouter);
-server.use('/strains', strainsRouter);
-server.use('/response', userResponseRouter);
-server.use('/recommendation', recommendationRouter);
+server.use('/users', authenticate, usersRouter);
+server.use('/strains', authenticate, strainsRouter);
+server.use('/response', authenticate, userResponseRouter);
+server.use('/recommendation', authenticate, recommendationRouter);
 
 // ======== 404 Page ========
 server.use('/', (req, res, next) => {
