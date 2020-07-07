@@ -20,8 +20,8 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/auth', authRouter);
-server.use('/users',  usersRouter);
-server.use('/strains',  strainsRouter);
+server.use('/users', authenticate, usersRouter);
+server.use('/strains', authenticate, strainsRouter);
 server.use('/response',  userResponseRouter);
 server.use('/recommendation',  recommendationRouter);
 
